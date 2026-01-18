@@ -1,0 +1,311 @@
+.treasure-hunt {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  min-height: 100vh;
+  min-height: 100dvh;
+  animation: fade-in 0.5s ease;
+}
+
+@keyframes fade-in {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* 헤더 */
+.treasure-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 0;
+  margin-bottom: 1rem;
+  gap: 0.5rem;
+}
+
+.header-actions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.icon-btn {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(100, 180, 255, 0.1);
+  border: 1px solid rgba(100, 180, 255, 0.3);
+  border-radius: 8px;
+  font-size: 1.25rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.icon-btn:hover {
+  background: rgba(100, 180, 255, 0.2);
+  transform: translateY(-2px);
+}
+
+.back-btn {
+  background: rgba(100, 180, 255, 0.1);
+  border: 1px solid rgba(100, 180, 255, 0.3);
+  color: #64b4ff;
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.back-btn:hover {
+  background: rgba(100, 180, 255, 0.2);
+}
+
+.score-display {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.score-label {
+  font-size: 0.7rem;
+  color: rgba(255, 255, 255, 0.5);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.score-value {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #64b4ff;
+  text-shadow: 0 0 15px rgba(100, 180, 255, 0.5);
+}
+
+/* 컨텐츠 */
+.treasure-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+.game-title {
+  text-align: center;
+}
+
+.game-title .theme-badge {
+  display: inline-block;
+  font-size: 0.7rem;
+  letter-spacing: 0.15em;
+  color: #64b4ff;
+  background: rgba(100, 180, 255, 0.15);
+  border: 1px solid rgba(100, 180, 255, 0.3);
+  padding: 0.2rem 0.6rem;
+  border-radius: 2px;
+  margin-bottom: 0.5rem;
+}
+
+.game-title h1 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #fff;
+  margin: 0;
+  text-shadow: 0 0 20px rgba(100, 180, 255, 0.3);
+}
+
+.game-subtitle {
+  font-size: 0.875rem;
+  color: rgba(255, 255, 255, 0.6);
+  margin: 0.5rem 0 0;
+}
+
+/* 스캐너 컨테이너 */
+.scanner-container {
+  position: relative;
+  width: 100%;
+  max-width: 300px;
+  aspect-ratio: 1;
+  border: 2px solid rgba(100, 180, 255, 0.3);
+  border-radius: 8px;
+  overflow: hidden;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+#qr-reader {
+  width: 100%;
+  height: 100%;
+}
+
+#qr-reader.active video {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+
+/* html5-qrcode 스타일 오버라이드 */
+#qr-reader img[alt="Info icon"] {
+  display: none;
+}
+
+#qr-reader__scan_region {
+  min-height: 100% !important;
+}
+
+#qr-reader__scan_region > br {
+  display: none;
+}
+
+#qr-reader__dashboard {
+  display: none !important;
+}
+
+.scanner-placeholder {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.scanner-icon {
+  font-size: 3rem;
+  opacity: 0.5;
+}
+
+.scanner-placeholder p {
+  font-size: 0.875rem;
+  margin: 0;
+}
+
+/* 스캔 메시지 */
+.scan-message {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(15, 20, 35, 0.95);
+  border: 2px solid rgba(100, 180, 255, 0.5);
+  border-radius: 8px;
+  padding: 1.5rem 2rem;
+  text-align: center;
+  animation: pop-in 0.3s ease;
+  z-index: 10;
+}
+
+@keyframes pop-in {
+  from { transform: translate(-50%, -50%) scale(0.8); opacity: 0; }
+  to { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+}
+
+.scan-message.success {
+  border-color: #4ade80;
+  box-shadow: 0 0 30px rgba(74, 222, 128, 0.3);
+}
+
+.scan-message.warning {
+  border-color: #f87171;
+  box-shadow: 0 0 30px rgba(248, 113, 113, 0.3);
+}
+
+.message-text {
+  display: block;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #fff;
+}
+
+.points-earned {
+  display: block;
+  font-size: 2rem;
+  font-weight: 800;
+  color: #4ade80;
+  margin-top: 0.5rem;
+  text-shadow: 0 0 20px rgba(74, 222, 128, 0.5);
+}
+
+/* 에러 메시지 */
+.error-message {
+  color: #f87171;
+  font-size: 0.875rem;
+  text-align: center;
+  padding: 0.75rem;
+  background: rgba(248, 113, 113, 0.1);
+  border: 1px solid rgba(248, 113, 113, 0.3);
+  border-radius: 4px;
+  width: 100%;
+  max-width: 300px;
+}
+
+/* 통계 */
+.treasure-stats {
+  display: flex;
+  gap: 2rem;
+}
+
+.stat-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.stat-value {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #fff;
+}
+
+.stat-label {
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.5);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+/* 액션 버튼 */
+.treasure-actions {
+  margin-top: auto;
+  padding: 1rem 0;
+}
+
+.action-btn {
+  padding: 1rem 2.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.action-btn.start {
+  background: linear-gradient(180deg, #64b4ff 0%, #4080ff 100%);
+  color: #fff;
+  box-shadow: 0 4px 20px rgba(100, 180, 255, 0.4);
+}
+
+.action-btn.start:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 25px rgba(100, 180, 255, 0.5);
+}
+
+.action-btn.stop {
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.action-btn.stop:hover {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.action-btn:active {
+  transform: scale(0.98);
+}
