@@ -1,0 +1,191 @@
+.inventory-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  transition: background 0.3s ease;
+  padding: 1rem;
+}
+
+.inventory-overlay.visible {
+  background: rgba(0, 0, 0, 0.85);
+}
+
+.inventory-container {
+  position: relative;
+  width: 100%;
+  max-width: 360px;
+  max-height: 85vh;
+  background: linear-gradient(180deg, rgba(20, 25, 45, 0.98) 0%, rgba(15, 20, 35, 0.99) 100%);
+  border: 2px solid rgba(100, 180, 255, 0.3);
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  transform: scale(0.9) translateY(20px);
+  opacity: 0;
+  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  overflow: hidden;
+}
+
+.inventory-container.visible {
+  transform: scale(1) translateY(0);
+  opacity: 1;
+}
+
+/* 헤더 */
+.inventory-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem;
+  border-bottom: 1px solid rgba(100, 180, 255, 0.2);
+}
+
+.inventory-header h2 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #fff;
+  margin: 0;
+}
+
+.inventory-container .close-btn {
+  background: none;
+  border: none;
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 1.25rem;
+  cursor: pointer;
+  padding: 0.25rem;
+  transition: color 0.2s ease;
+}
+
+.inventory-container .close-btn:hover {
+  color: #fff;
+}
+
+/* 통계 */
+.inventory-stats {
+  display: flex;
+  gap: 0.5rem;
+  padding: 1rem;
+  border-bottom: 1px solid rgba(100, 180, 255, 0.1);
+}
+
+.stat-box {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(100, 180, 255, 0.08);
+  padding: 0.6rem;
+  border-radius: 8px;
+  border: 1px solid rgba(100, 180, 255, 0.15);
+}
+
+.stat-icon {
+  font-size: 1.25rem;
+}
+
+.stat-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.stat-value {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #64b4ff;
+}
+
+.stat-label {
+  font-size: 0.65rem;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+/* 섹션 */
+.inventory-section {
+  padding: 1rem;
+  overflow-y: auto;
+}
+
+.section-title {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.7);
+  margin: 0 0 0.75rem 0;
+}
+
+/* 아이템 그리드 */
+.items-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.5rem;
+}
+
+.inventory-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.6rem 0.25rem;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.2s ease;
+}
+
+.inventory-item.collected {
+  background: rgba(74, 222, 128, 0.1);
+  border-color: rgba(74, 222, 128, 0.25);
+}
+
+.inventory-item.collected:hover {
+  background: rgba(74, 222, 128, 0.15);
+  transform: translateY(-2px);
+}
+
+.inventory-item.uncollected {
+  opacity: 0.4;
+}
+
+.inventory-item .item-emoji {
+  font-size: 1.5rem;
+}
+
+.inventory-item .item-name {
+  font-size: 0.65rem;
+  color: rgba(255, 255, 255, 0.8);
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+}
+
+.empty-message {
+  font-size: 0.875rem;
+  color: rgba(255, 255, 255, 0.5);
+  text-align: center;
+  padding: 2rem 1rem;
+}
+
+/* 완료 배너 */
+.completion-banner {
+  padding: 1rem;
+  text-align: center;
+  background: linear-gradient(90deg, rgba(74, 222, 128, 0.2), rgba(100, 180, 255, 0.2));
+  color: #4ade80;
+  font-weight: 700;
+  font-size: 1rem;
+  animation: glow 2s ease-in-out infinite;
+}
+
+@keyframes glow {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.8; }
+}

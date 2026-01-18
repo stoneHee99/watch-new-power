@@ -1,0 +1,190 @@
+.map-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  flex: 1;
+  padding: 1rem 0;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.5s ease;
+}
+
+.map-page.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.map-header {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.map-header .system-text {
+  font-size: 0.7rem;
+  letter-spacing: 0.3em;
+  color: rgba(100, 180, 255, 0.8);
+  text-shadow: 0 0 10px rgba(100, 180, 255, 0.5);
+}
+
+.map-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #fff;
+  margin-top: 0.25rem;
+  text-shadow: 0 0 20px rgba(100, 180, 255, 0.3);
+}
+
+.map-container {
+  width: 100%;
+  max-width: 400px;
+  border: 2px solid rgba(100, 180, 255, 0.3);
+  border-radius: 4px;
+  overflow: hidden;
+  position: relative;
+  box-shadow:
+    0 0 30px rgba(100, 180, 255, 0.15),
+    inset 0 0 30px rgba(0, 0, 0, 0.5);
+}
+
+.map-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.map-image {
+  width: 100%;
+  height: auto;
+  display: block;
+  filter: invert(0.85) sepia(0.3) saturate(0.8) hue-rotate(180deg) brightness(0.7);
+}
+
+.map-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(100, 180, 255, 0.05) 0%,
+    transparent 50%,
+    rgba(100, 180, 255, 0.08) 100%
+  );
+  pointer-events: none;
+}
+
+/* 장소 마커 */
+.location-marker {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  width: 24px;
+  height: 24px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  z-index: 10;
+}
+
+.marker-dot {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 12px;
+  height: 12px;
+  background: radial-gradient(circle, #64b4ff 0%, #4080ff 100%);
+  border-radius: 50%;
+  box-shadow:
+    0 0 10px rgba(100, 180, 255, 0.8),
+    0 0 20px rgba(100, 180, 255, 0.4);
+  transition: all 0.3s ease;
+}
+
+.marker-glow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 24px;
+  height: 24px;
+  background: rgba(100, 180, 255, 0.3);
+  border-radius: 50%;
+  animation: marker-pulse 2s ease-in-out infinite;
+}
+
+@keyframes marker-pulse {
+  0%, 100% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 0.6;
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1.5);
+    opacity: 0;
+  }
+}
+
+.location-marker:hover .marker-dot,
+.location-marker.active .marker-dot {
+  width: 16px;
+  height: 16px;
+  box-shadow:
+    0 0 15px rgba(100, 180, 255, 1),
+    0 0 30px rgba(100, 180, 255, 0.6);
+}
+
+/* 툴팁 */
+.marker-tooltip {
+  position: absolute;
+  bottom: calc(100% + 10px);
+  left: 50%;
+  transform: translateX(-50%) translateY(10px);
+  background: rgba(15, 20, 35, 0.95);
+  border: 1px solid rgba(100, 180, 255, 0.4);
+  border-radius: 4px;
+  padding: 0.5rem 0.75rem;
+  white-space: nowrap;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.2s ease;
+  pointer-events: none;
+}
+
+.marker-tooltip::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 6px solid transparent;
+  border-top-color: rgba(100, 180, 255, 0.4);
+}
+
+.location-marker:hover .marker-tooltip,
+.location-marker.active .marker-tooltip {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(0);
+}
+
+.tooltip-name {
+  display: block;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #fff;
+}
+
+.tooltip-theme {
+  display: block;
+  font-size: 0.75rem;
+  color: rgba(100, 180, 255, 0.9);
+  margin-top: 2px;
+}
+
+.map-hint {
+  margin-top: 1rem;
+  font-size: 0.875rem;
+  color: rgba(255, 255, 255, 0.5);
+  text-align: center;
+}
