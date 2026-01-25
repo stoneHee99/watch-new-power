@@ -47,7 +47,7 @@ export function ConfirmModal({ onConfirm }: ConfirmModalProps) {
         {/* 메인 컨텐츠 */}
         <div className={`modal-content ${showContent ? 'visible' : ''}`}>
           <p className="modal-message">
-            여러분이라면
+            <span className="highlight">여러분</span>이라면
             <br />
             어떤 선택을 하시겠습니까?
           </p>
