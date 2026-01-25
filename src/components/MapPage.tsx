@@ -32,7 +32,7 @@ export function MapPage({ onSelectLocation }: MapPageProps) {
     <div className={`map-page ${isVisible ? 'visible' : ''}`}>
       <div className="map-header">
         <span className="system-text">QUEST MAP</span>
-        <h1 className="map-title">지훈이의 과거</h1>
+        <h1 className="map-title">선택의 순간</h1>
       </div>
 
       <div className="map-container">
