@@ -12,8 +12,8 @@ const gameDescriptions: Record<string, GameInfo> = {
   jerusalem: {
     id: 'jerusalem',
     name: '예루살렘 성전',
-    theme: '비교',
-    description: '다른 사람들의 시선을 의식하느라 하나님을 바라보지 못하는 지훈이를 도와주세요! 만들기 활동을 통해 지훈이의 과거를 바꿀 수 있어요.',
+    theme: '정체성',
+    description: '지훈이는 세상 속에서 본인이 그리스도인임을 떳떳하게 말하지 못해요. 보드게임에서 승리하여 지훈이의 과거를 바꿀 수 있어요.',
   },
   bethlehem: {
     id: 'bethlehem',
@@ -24,8 +24,8 @@ const gameDescriptions: Record<string, GameInfo> = {
   retreat: {
     id: 'retreat',
     name: '수양관 식당',
-    theme: '정체성',
-    description: '지훈이는 세상 속에서 본인이 그리스도인임을 떳떳하게 말하지 못해요. 보드게임에서 승리하여 지훈이의 과거를 바꿀 수 있어요.',
+    theme: '비교',
+    description: '다른 사람들의 시선을 의식하느라 하나님을 바라보지 못하는 지훈이를 도와주세요! 만들기 활동을 통해 지훈이의 과거를 바꿀 수 있어요.',
   },
 }
 
