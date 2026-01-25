@@ -30,12 +30,13 @@ export function MapPage({ onSelectLocation }: MapPageProps) {
 
   return (
     <div className={`map-page ${isVisible ? 'visible' : ''}`}>
-      <div className="map-header">
-        <span className="system-text">QUEST MAP</span>
-        <h1 className="map-title">선택의 순간</h1>
-      </div>
+      <div className="map-center-group">
+        <div className="map-header">
+          <span className="system-text">QUEST MAP</span>
+          <h1 className="map-title">선택의 순간</h1>
+        </div>
 
-      <div className="map-container">
+        <div className="map-container">
         <div className="map-wrapper">
           <img src="/map.png" alt="지도" className="map-image" />
 
@@ -60,6 +61,7 @@ export function MapPage({ onSelectLocation }: MapPageProps) {
               </div>
             </button>
           ))}
+        </div>
         </div>
       </div>
 
