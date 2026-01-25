@@ -55,12 +55,12 @@ export function ConfirmModal({ onConfirm }: ConfirmModalProps) {
           <div className="modal-buttons">
             <button className="modal-btn confirm" onClick={handleConfirm}>
               <span className="btn-glow" />
-              예
+              확인
             </button>
             {showCancelBtn && (
               <button className="modal-btn cancel" onClick={handleCancel}>
                 <span className="btn-glow" />
-                아니오
+                취소
               </button>
             )}
           </div>
