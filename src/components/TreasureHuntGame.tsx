@@ -8,6 +8,7 @@ const STORAGE_KEY = 'treasureHunt_scannedQRs'
 const SCORE_KEY = 'treasureHunt_totalScore'
 const QR_PREFIX = 'JIHOON_TREASURE_' // QR 값 예시: JIHOON_TREASURE_001
 const TOTAL_TREASURES = 50
+const SCAN_COOLDOWN = 3000 // 스캔 후 3초간 대기
 
 interface TreasureHuntGameProps {
   onBack: () => void
@@ -23,6 +24,7 @@ export function TreasureHuntGame({ onBack }: TreasureHuntGameProps) {
   const [showShop, setShowShop] = useState(false)
   const [showInventory, setShowInventory] = useState(false)
   const scannerRef = useRef<Html5Qrcode | null>(null)
+  const isProcessingRef = useRef(false) // 디바운싱용
 
   // 로컬스토리지에서 데이터 불러오기
   useEffect(() => {
@@ -58,6 +60,12 @@ export function TreasureHuntGame({ onBack }: TreasureHuntGameProps) {
     setScannedCount(scannedQRs.length)
   }
 
+  // 현재 점수 가져오기 (localStorage에서 직접)
+  const getCurrentScore = (): number => {
+    const saved = localStorage.getItem(SCORE_KEY)
+    return saved ? parseInt(saved, 10) : 0
+  }
+
   // 점수 저장
   const saveScore = (newScore: number) => {
     localStorage.setItem(SCORE_KEY, newScore.toString())
@@ -71,24 +79,39 @@ export function TreasureHuntGame({ onBack }: TreasureHuntGameProps) {
 
   // QR 스캔 성공 시
   const onScanSuccess = (decodedText: string) => {
+    // 디바운싱: 이미 처리 중이면 무시
+    if (isProcessingRef.current) {
+      return
+    }
+
     // 우리가 만든 QR인지 확인 (prefix 체크)
     if (!decodedText.startsWith(QR_PREFIX)) {
+      isProcessingRef.current = true
       setMessage('유효하지 않은 QR이에요')
       setLastPoints(null)
-      setTimeout(() => setMessage(''), 2000)
+      setTimeout(() => {
+        setMessage('')
+        isProcessingRef.current = false
+      }, 2000)
       return
     }
 
     if (isAlreadyScanned(decodedText)) {
+      isProcessingRef.current = true
       setMessage('이미 발견한 보물이에요!')
       setLastPoints(null)
-      setTimeout(() => setMessage(''), 2000)
+      setTimeout(() => {
+        setMessage('')
+        isProcessingRef.current = false
+      }, 2000)
       return
     }
 
     // 새로운 보물 발견!
+    isProcessingRef.current = true
     const points = getRandomPoints()
-    const newScore = totalScore + points
+    const currentScore = getCurrentScore() // localStorage에서 최신 점수 가져오기
+    const newScore = currentScore + points
 
     saveScannedQR(decodedText)
     saveScore(newScore)
@@ -98,7 +121,8 @@ export function TreasureHuntGame({ onBack }: TreasureHuntGameProps) {
     setTimeout(() => {
       setMessage('')
       setLastPoints(null)
-    }, 2500)
+      isProcessingRef.current = false
+    }, SCAN_COOLDOWN)
   }
 
   // 카메라 시작
