@@ -47,20 +47,20 @@ export function ConfirmModal({ onConfirm }: ConfirmModalProps) {
         {/* 메인 컨텐츠 */}
         <div className={`modal-content ${showContent ? 'visible' : ''}`}>
           <p className="modal-message">
-            <span className="highlight">지훈</span>이의 과거를
+            <span className="highlight">여러분</span>이라면
             <br />
-            바꿔주시겠습니까?
+            어떤 선택을 하시겠습니까?
           </p>
 
           <div className="modal-buttons">
             <button className="modal-btn confirm" onClick={handleConfirm}>
               <span className="btn-glow" />
-              예
+              확인해보기
             </button>
             {showCancelBtn && (
               <button className="modal-btn cancel" onClick={handleCancel}>
                 <span className="btn-glow" />
-                아니오
+                취소
               </button>
             )}
           </div>

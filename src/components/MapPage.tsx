@@ -10,8 +10,8 @@ interface Location {
 }
 
 const locations: Location[] = [
-  { id: 'retreat', name: '수양관 식당', theme: '정체성', x: 28, y: 68 },
-  { id: 'jerusalem', name: '예루살렘 성전', theme: '비교', x: 58, y: 18 },
+  { id: 'retreat', name: '수양관 식당', theme: '비교', x: 28, y: 68 },
+  { id: 'jerusalem', name: '예루살렘 성전', theme: '정체성', x: 58, y: 18 },
   { id: 'bethlehem', name: '베들레헴 성전', theme: '관계', x: 72, y: 22 },
   { id: 'smallField', name: '소운동장', theme: '신앙', x: 58, y: 70 },
 ]
@@ -30,12 +30,13 @@ export function MapPage({ onSelectLocation }: MapPageProps) {
 
   return (
     <div className={`map-page ${isVisible ? 'visible' : ''}`}>
-      <div className="map-header">
-        <span className="system-text">QUEST MAP</span>
-        <h1 className="map-title">지훈이의 과거</h1>
-      </div>
+      <div className="map-center-group">
+        <div className="map-header">
+          <span className="system-text">QUEST MAP</span>
+          <h1 className="map-title">선택의 순간</h1>
+        </div>
 
-      <div className="map-container">
+        <div className="map-container">
         <div className="map-wrapper">
           <img src="/map.png" alt="지도" className="map-image" />
 
@@ -60,6 +61,7 @@ export function MapPage({ onSelectLocation }: MapPageProps) {
               </div>
             </button>
           ))}
+        </div>
         </div>
       </div>
 

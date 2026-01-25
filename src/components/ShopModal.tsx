@@ -6,23 +6,22 @@ export interface ShopItem {
   name: string
   emoji: string
   price: number
-  description: string
 }
 
 // 예배에 필요한 물품들
 export const SHOP_ITEMS: ShopItem[] = [
-  { id: 'bible', name: '성경', emoji: '📖', price: 500, description: '하나님의 말씀' },
-  { id: 'hymnal', name: '찬송가', emoji: '🎵', price: 400, description: '찬양을 위한 책' },
-  { id: 'cross', name: '십자가', emoji: '✝️', price: 600, description: '예수님의 사랑' },
-  { id: 'candle', name: '촛불', emoji: '🕯️', price: 200, description: '빛으로 인도하는' },
-  { id: 'offering', name: '헌금봉투', emoji: '💌', price: 150, description: '감사의 마음' },
-  { id: 'prayer_cushion', name: '기도방석', emoji: '🧎', price: 350, description: '무릎 꿇고 기도' },
-  { id: 'rosary', name: '묵주', emoji: '📿', price: 450, description: '기도를 세며' },
-  { id: 'holy_water', name: '성수', emoji: '💧', price: 300, description: '정결케 하는 물' },
-  { id: 'incense', name: '향', emoji: '🌿', price: 250, description: '기도의 향기' },
-  { id: 'robe', name: '성가대복', emoji: '👘', price: 700, description: '찬양을 위한 옷' },
-  { id: 'communion_cup', name: '성찬컵', emoji: '🍷', price: 550, description: '그리스도의 피' },
-  { id: 'bread', name: '떡', emoji: '🍞', price: 200, description: '그리스도의 몸' },
+  { id: 'bible', name: '성경', emoji: '📖', price: 500 },
+  { id: 'hymnal', name: '찬송가', emoji: '🎵', price: 400 },
+  { id: 'offering', name: '헌금봉투', emoji: '💌', price: 150 },
+  { id: 'robe', name: '성가대복', emoji: '👘', price: 700 },
+  { id: 'chair', name: '의자', emoji: '🪑', price: 350 },
+  { id: 'pen', name: '펜', emoji: '🖊️', price: 100 },
+  { id: 'notebook', name: '노트', emoji: '📓', price: 200 },
+  { id: 'water', name: '물병', emoji: '🧴', price: 150 },
+  { id: 'handkerchief', name: '손수건', emoji: '🧣', price: 120 },
+  { id: 'blanket', name: '담요', emoji: '🧥', price: 300 },
+  { id: 'bag', name: '가방', emoji: '👜', price: 250 },
+  { id: 'bookmark', name: '책갈피', emoji: '🔖', price: 80 },
 ]
 
 const INVENTORY_KEY = 'treasureHunt_inventory'
@@ -100,7 +99,6 @@ export function ShopModal({ currentScore, onPurchase, onClose }: ShopModalProps)
               <div className="item-emoji">{item.emoji}</div>
               <div className="item-info">
                 <span className="item-name">{item.name}</span>
-                <span className="item-desc">{item.description}</span>
               </div>
               <div className="item-action">
                 {isPurchased(item.id) ? (

@@ -1,9 +1,12 @@
 .map-page {
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   width: 100%;
-  flex: 1;
+  min-height: 100vh;
+  min-height: 100dvh;
   padding: 1rem 0;
   opacity: 0;
   transform: translateY(20px);
@@ -13,6 +16,12 @@
 .map-page.visible {
   opacity: 1;
   transform: translateY(0);
+}
+
+.map-center-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .map-header {
@@ -183,7 +192,10 @@
 }
 
 .map-hint {
-  margin-top: 1rem;
+  position: absolute;
+  bottom: 2rem;
+  left: 0;
+  right: 0;
   font-size: 0.875rem;
   color: rgba(255, 255, 255, 0.5);
   text-align: center;
