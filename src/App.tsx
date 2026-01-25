@@ -59,8 +59,8 @@ function App() {
       {currentPage === 'loading' && (
         <div className="loading-screen">
           <div className="loading-content">
-            <h1 className="title">회귀 시작</h1>
-            <p className="subtitle">지훈이의 과거를 바꾸는 중...</p>
+            <h1 className="title">접속 시작</h1>
+            <p className="subtitle">해당 상황을 시뮬레이션 합니다.</p>
             <div className="loading-bar">
               <div className="loading-progress" />
             </div>
