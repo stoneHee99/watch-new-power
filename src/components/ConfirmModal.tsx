@@ -55,7 +55,7 @@ export function ConfirmModal({ onConfirm }: ConfirmModalProps) {
           <div className="modal-buttons">
             <button className="modal-btn confirm" onClick={handleConfirm}>
               <span className="btn-glow" />
-              확인
+              확인해보기
             </button>
             {showCancelBtn && (
               <button className="modal-btn cancel" onClick={handleCancel}>
