@@ -37,11 +37,11 @@ export function MapPage({ onSelectLocation }: MapPageProps) {
         </div>
 
         <div className="map-container">
-        <div className="map-wrapper">
-          <img src="/map.png" alt="지도" className="map-image" />
-
-          {/* 오버레이 효과 */}
-          <div className="map-overlay" />
+          <div className="map-wrapper">
+            <img src="/map.png" alt="지도" className="map-image" />
+            {/* 오버레이 효과 */}
+            <div className="map-overlay" />
+          </div>
 
           {/* 장소 마커들 */}
           {locations.map((loc) => (
@@ -61,7 +61,6 @@ export function MapPage({ onSelectLocation }: MapPageProps) {
               </div>
             </button>
           ))}
-        </div>
         </div>
       </div>
 

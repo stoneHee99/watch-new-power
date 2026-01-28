@@ -49,7 +49,7 @@
   max-width: 400px;
   border: 2px solid rgba(100, 180, 255, 0.3);
   border-radius: 4px;
-  overflow: hidden;
+  overflow: visible;
   position: relative;
   box-shadow:
     0 0 30px rgba(100, 180, 255, 0.15),
@@ -59,6 +59,8 @@
 .map-wrapper {
   position: relative;
   width: 100%;
+  overflow: hidden;
+  border-radius: 2px;
 }
 
 .map-image {
